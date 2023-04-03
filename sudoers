@@ -6,16 +6,16 @@
 #
 # See the man page for details on how to write a sudoers file.
 #
-Defaults	env_reset
-Defaults	mail_badpass
-Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
-Defaults	requiretty
-Defaults	passwd_tries=3
-Defaults	badpass_message="101010101001001111110010011010101010101010111010010 ... that is computer language for no. ¯\_(ツ)_/¯"
-Defaults	log_input
-Defaults	log_output
-Defaults	iolog_dir="/var/log/sudo/"
-Defaults	logfile="/var/log/sudo/sudo.log"
+Defaults        env_reset
+Defaults        mail_badpass
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults        requiretty
+Defaults        passwd_tries=3
+Defaults        badpass_message="101010101001001111110010011010101010101010111010010 ... that is computer language for no. ¯\_(ツ)_/¯"
+Defaults        log_input
+Defaults        log_output
+Defaults        iolog_dir="/var/log/sudo/"
+Defaults        logfile="/var/log/sudo/sudo.log"
 
 # Host alias specification
 
@@ -24,10 +24,10 @@ Defaults	logfile="/var/log/sudo/sudo.log"
 # Cmnd alias specification
 
 # User privilege specification
-root	ALL=(ALL:ALL) ALL
+root    ALL=(ALL:ALL) ALL
 
 # Allow members of group sudo to execute any command
-%sudo	ALL=(ALL:ALL) ALL
+%sudo   ALL=(ALL:ALL) ALL
 
 # See sudoers(5) for more information on "@include" directives:
 
