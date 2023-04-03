@@ -8,10 +8,10 @@
 #
 Defaults	env_reset
 Defaults	mail_badpass
-Defaults	requiretty
 Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults	requiretty
 Defaults	passwd_tries=3
-Defaults	badpass_message="wrong password ¯\_(ツ)_/¯"
+Defaults	badpass_message="101010101001001111110010011010101010101010111010010 ... that is computer language for no. ¯\_(ツ)_/¯"
 Defaults	log_input
 Defaults	log_output
 Defaults	iolog_dir="/var/log/sudo/"
