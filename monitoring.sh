@@ -2,9 +2,9 @@ echo "	#Architecture: $(uname -a)"
 echo "	#CPU physical : $(grep "processor" /proc/cpuinfo | wc -l)"
 echo "	#vCPU: $(grep "cpu cores" /proc/cpuinfo | uniq | wc -l)"
 free -m | grep "^Mem:" | awk '{printf("	#Memory Usage: %d/%dMB (%.1f%%)\n"),$3, $2, $3 / $2 * 100 }'
-dused=$(df -BMB | grep "LVMGroup" | awk '{print $3}' | tr "%\n" " " | awk '{ for(i=1;i<=NF;i++) sum+=$i }END{printf("%d\n", sum)}')
-dtotal=$(df -BGB | grep "LVMGroup" | awk '{print $2}' | tr "%\n" " " | awk '{ for(i=1;i<=NF;i++) sum+=$i }END{printf("%d\n", sum)}')
-dup=$(df -BGB | grep "LVMGroup" | awk '{print $2}' | tr "%\n" " " | awk '{ for(i=1;i<=NF;i++) sum+=$i }END{printf("%d%%\n", sum)}')
+dused=$(df --output=source,used -BKB | grep "LVMGroup" | awk '{sum += $2} END {printf("%.1f\n", sum/1000000)}')
+dtotal=$(df --output=source,size -BKB | grep "LVMGroup" | awk '{sum += $2} END {printf("%.1f\n", sum/1000000)}')
+dup=$(awk -v dused=$dused -v dtotal=$dtotal 'BEGIN {printf("%.1f%%", dused/dtotal*100)}')
 echo "	#Disk Usage: $dused/${dtotal}Gb ($dup)"
 top -bn1 | grep '^%Cpu' | cut -c 9- | xargs | awk '{printf("	#CPU load: %.1f%%\n"), $1 + $2 + $3}'
 echo "	#Last boot: $(uptime -s)"
